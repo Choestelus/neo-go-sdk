@@ -5,8 +5,8 @@ import (
 	"net"
 	"net/url"
 
-	"github.com/CityOfZion/neo-go-sdk/neo/models"
-	"github.com/CityOfZion/neo-go-sdk/neo/models/response"
+	"github.com/Choestelus/neo-go-sdk/neo/models"
+	"github.com/Choestelus/neo-go-sdk/neo/models/response"
 )
 
 type (

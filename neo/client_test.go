@@ -3,7 +3,7 @@ package neo_test
 import (
 	"testing"
 
-	"github.com/CityOfZion/neo-go-sdk/neo"
+	"github.com/Choestelus/neo-go-sdk/neo"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -124,29 +124,30 @@ func TestClient(t *testing.T) {
 					assert.NoError(t, err)
 					assert.Equal(t, testTransaction.hash, transaction.ID)
 					assert.Equal(t, testTransaction.size, transaction.Size)
+					assert.Equal(t, testTransaction.script, transaction.InvocationScript)
 				})
 			}
 		})
 	})
 
-	t.Run(".GetTransactionOutput()", func(t *testing.T) {
-		t.Run("HappyCase", func(t *testing.T) {
-			client := neo.NewClient(nodeURI)
+	// t.Run(".GetTransactionOutput()", func(t *testing.T) {
+	// 	t.Run("HappyCase", func(t *testing.T) {
+	// 		client := neo.NewClient(nodeURI)
 
-			for _, testTransactionOutput := range testTransactionOutputs {
-				t.Run(testTransactionOutput.id, func(t *testing.T) {
-					transactionOutput, err := client.GetTransactionOutput(
-						testTransactionOutput.hash,
-						testTransactionOutput.index,
-					)
+	// 		for _, testTransactionOutput := range testTransactionOutputs {
+	// 			t.Run(testTransactionOutput.id, func(t *testing.T) {
+	// 				transactionOutput, err := client.GetTransactionOutput(
+	// 					testTransactionOutput.hash,
+	// 					testTransactionOutput.index,
+	// 				)
 
-					assert.NoError(t, err)
-					assert.Equal(t, testTransactionOutput.asset, transactionOutput.Asset)
-					assert.Equal(t, testTransactionOutput.value, transactionOutput.Value)
-				})
-			}
-		})
-	})
+	// 				assert.NoError(t, err)
+	// 				assert.Equal(t, testTransactionOutput.asset, transactionOutput.Asset)
+	// 				assert.Equal(t, testTransactionOutput.value, transactionOutput.Value)
+	// 			})
+	// 		}
+	// 	})
+	// })
 
 	t.Run(".GetUnconfirmedTransactions()", func(t *testing.T) {
 		t.Run("HappyCase", func(t *testing.T) {
