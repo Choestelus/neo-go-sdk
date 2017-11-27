@@ -52,14 +52,22 @@ var (
 	}
 
 	testTransactions = []struct {
-		hash string
-		id   string
-		size int64
+		hash   string
+		id     string
+		size   int64
+		script string
 	}{
 		{
-			hash: "0xc515c4d2db27e06fd2305a5c5378f820d2c4cc04477ebe40ffa40b956eb4f8b5",
-			id:   "1",
-			size: 202,
+			hash:   "0xc515c4d2db27e06fd2305a5c5378f820d2c4cc04477ebe40ffa40b956eb4f8b5",
+			id:     "1",
+			size:   202,
+			script: "",
+		},
+		{
+			hash:   "0x1a56f5cd1776b4277c916d5e3890de5b1dbcd5a8bfb5eb939ea3ccdddf1e768c",
+			id:     "1",
+			size:   219,
+			script: "0400c2eb0b143b16b9beafbd2855e55b660e45b35f86cf2e543c14fbadee826e366687d7046d9ba16080732826d37353c1087472616e7366657267f91d6b7085db7c5aaf09f19eeec1ca3c0db2c6ecf166135484e48164fe72",
 		},
 	}
 

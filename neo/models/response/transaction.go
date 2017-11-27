@@ -1,6 +1,7 @@
 package response
 
-import "github.com/CityOfZion/neo-go-sdk/neo/models"
+// import "github.com/CityOfZion/neo-go-sdk/neo/models"
+import "github.com/Choestelus/neo-go-sdk/neo/models"
 
 type (
 	// Transaction represents the JSON schema of a response from a NEO node, where the
