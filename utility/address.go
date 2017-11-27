@@ -3,6 +3,7 @@ package utility
 import (
 	"bytes"
 	"crypto/sha256"
+	"encoding/hex"
 	"errors"
 	"fmt"
 )
@@ -41,4 +42,22 @@ func AddressToHash(addr string, addrVer byte) (string, error) {
 	// operations on slice directly mutate underlying content
 
 	return fmt.Sprintf("%x", hashBytes), nil
+}
+
+// AddressToHash converts base58 Neo address into little endian hash160 format
+func HashToAddress(hash string, addrVer byte) (string, error) {
+	b, err := hex.DecodeString(hash)
+	if err != nil {
+		return "", err
+	}
+	ReverseByteSlice(b)
+	sb := []byte{addrVer}
+	sb = append(sb, b...)
+	checksum1stRound := sha256.Sum256(sb)
+	checksum2ndRound := sha256.Sum256(checksum1stRound[:])
+	outb := append(sb, checksum2ndRound[0:4]...)
+
+	encoder := NewBase58()
+	return encoder.Encode(outb), nil
+
 }
